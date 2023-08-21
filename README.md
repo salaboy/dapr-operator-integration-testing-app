@@ -1,0 +1,1 @@
+# dapr-operator-integration-testing-app
