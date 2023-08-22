@@ -1,0 +1,5 @@
+redisHost: "redis-master"
+install:
+  infrastructure: true
+redis: 
+  architecture: standalone  
