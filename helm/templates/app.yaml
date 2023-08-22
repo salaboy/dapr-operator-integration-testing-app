@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: testing-app-deployment
+  namespace: {{ .Release.Namespace }}
 spec:
   selector:
     matchLabels:
@@ -37,6 +38,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: testing-app-service
+  namespace: {{ .Release.Namespace }}
 spec:
   selector:
     app: testing-app
