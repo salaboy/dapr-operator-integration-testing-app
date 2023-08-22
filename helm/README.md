@@ -1,10 +1,24 @@
-# Rejekts EU 2023 :: Demo using Knative and Dapr
+# Helm chart to install the testing application
 
-This app requires to have installed Knative Serving in the cluster and Dapr and a Redis Instance called `redis` installed in the namespace where the chart is deployed. 
+To Install the chart, this chart also install Redis (Standalone mode): 
 
 ```
-helm repo add bitnami https://charts.bitnami.com/bitnami
-helm install redis bitnami/redis --set architecture=standalone
+helm install testing-app oci://docker.io/salaboy/testing-app --version v0.1.0
+```
+To interact with the `testing-app-service`:
+
+```
+kubectl  port-forward svc/testing-app-service 8080:80
+```
+
+Then to read information you can send a GET request to the /read endpoint:
+```
+http :8080/read
+```
+To write data to the state store you can send a POST request: 
+
+```
+http POST ":8080/write?message=hello"
 ```
 
 For more info check: [https://www.salaboy.com](https://www.salaboy.com)
